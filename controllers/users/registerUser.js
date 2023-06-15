@@ -4,8 +4,7 @@ const registerUserController = async (req, res, next) => {
   try {
     const data = await services.registerUser(req.body);
 
-    const { email } = data;
-    res.status(200).json({ email });
+    res.status(201).json(data);
   } catch (error) {
     next(error);
   }

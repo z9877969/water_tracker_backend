@@ -1,7 +1,7 @@
-const User = require("./user/user");
-const Category = require("./category/category");
+const { User } = require("./user/user");
+const userValidationSchemas = require("./user/userValidationSchemas");
 
 module.exports = {
   User,
-  Category,
+  userValidationSchemas,
 };

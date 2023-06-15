@@ -13,5 +13,6 @@ usersRouter.patch(
   validate.updateUserInfo,
   controllers.updateUserInfo
 );
+usersRouter.patch("/avatar", authorization, controllers.updateUserAvatar);
 
 module.exports = usersRouter;

@@ -2,8 +2,6 @@ const { users: services } = require("../../services");
 
 const getCurrentUser = async (req, res, next) => {
   try {
-    console.log("object");
-
     const userData = await services.getCurrentUser(req.user);
     res.json(userData);
   } catch (error) {

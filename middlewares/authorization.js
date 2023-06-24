@@ -18,6 +18,10 @@ const authorization = async (req, res, next) => {
 
       const user = await User.findById(id);
 
+      if (!user) {
+        throw createError(401, "Not authorized");
+      }
+
       req.user = user;
 
       next();

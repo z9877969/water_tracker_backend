@@ -1,10 +1,9 @@
 const multer = require("multer");
 const path = require("path");
-
-const tmpDir = path.join(__dirname, "../", "tmp");
+const { dirPath } = require("../helpers/filesTools");
 
 const multerConfig = multer.diskStorage({
-  destination: tmpDir,
+  destination: dirPath.tmp,
   filename: function (req, file, cb) {
     cb(null, file.originalname);
   },

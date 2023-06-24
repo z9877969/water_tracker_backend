@@ -1,18 +1,13 @@
 const { Schema, model } = require("mongoose");
-const Joi = require("joi");
-const { userSchemaConstants: constants } = require("../../constants");
+const { userSchema: constants, regex } = require("../../constants");
 
 const userSchema = new Schema(
   {
-    _id: {
-      type: Schema.Types.ObjectId,
-      required: true,
-    },
     email: {
       type: String,
       required: [true, "Email is required"],
       unique: true,
-      match: constants.EMAIL_REGEX,
+      match: regex.EMAIL_REGEX,
     },
     password: {
       type: String,
@@ -34,6 +29,11 @@ const userSchema = new Schema(
       type: String,
       require: true,
       default: "https://some.url.com/path/to/default/avatar",
+    },
+    waterRate: {
+      type: Number,
+      required: true,
+      default: 0,
     },
   },
   {

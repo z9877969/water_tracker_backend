@@ -2,8 +2,9 @@ const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
 const usersRouter = require("./routes/api/usersRouter");
-const waterNotesRouter = require("./routes/api/waterNotesRouter");
+const waterRouter = require("./routes/api/waterRouter");
 const { authorization } = require("./middlewares");
+const { addWaterNotesList } = require("./helpers");
 
 const app = express();
 
@@ -15,7 +16,19 @@ app.use(express.json());
 app.use(express.static("public"));
 
 app.use("/api/users", usersRouter);
-app.use("/api/water/notes", authorization, waterNotesRouter);
+app.use("/api/water", authorization, waterRouter);
+app.use(
+  "/api/db",
+  express.Router().post("/create", async (req, res, next) => {
+    try {
+      const { notesNum } = req.body;
+      await addWaterNotesList(notesNum);
+      res.status(204).json();
+    } catch (error) {
+      next(error);
+    }
+  })
+);
 
 app.use((req, res, next) => {
   console.log(req.path);

@@ -3,18 +3,21 @@ const fs = require("fs/promises");
 const Jimp = require("jimp");
 
 const avatarDir = path.join(__dirname, "../", "public", "avatar");
+const tmpDir = path.join(__dirname, "../", "tmp");
 
 const getFileExtension = (fileName) => fileName.split(".").reverse()[0];
+
 const createNewFileName = (oldFileName, newFileName) => {
   const extension = getFileExtension(oldFileName);
   return newFileName + "." + extension;
 };
 
-const clearTmp = async (oldFileName) => {
-  await fs.rm(oldFileName);
+const clearTmp = async (oldFilePath) => {
+  await fs.rm(oldFilePath);
 };
 
-const getAvatarFileName = (newFileName) => path.join(avatarDir, newFileName);
+const getAvatarFilePath = (newFileName) => path.join(avatarDir, newFileName);
+
 const getNewAvatarUrl = (newFileName) => path.join("/avatar", newFileName);
 
 const resizeAndReplaceImageFile = async (oldFilePath, newFilePath) => {
@@ -32,10 +35,13 @@ const resizeAndReplaceImageFile = async (oldFilePath, newFilePath) => {
 
 module.exports = {
   getFileExtension,
-  //   setFileToPublicDir,
   createNewFileName,
   clearTmp,
   getNewAvatarUrl,
-  getAvatarFileName,
+  getAvatarFilePath,
   resizeAndReplaceImageFile,
+  dirPath: {
+    avatar: avatarDir,
+    tmp: tmpDir,
+  },
 };

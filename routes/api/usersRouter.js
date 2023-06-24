@@ -23,5 +23,11 @@ usersRouter.patch(
   upload.single("avatarUrl"),
   controllers.updateUserAvatar
 );
+usersRouter.patch(
+  "/water/rate",
+  authorization,
+  validate.updateWaterRate,
+  controllers.updateWaterRate
+);
 
 module.exports = usersRouter;

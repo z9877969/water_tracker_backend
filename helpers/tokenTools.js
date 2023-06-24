@@ -1,11 +1,9 @@
 const jwt = require("jsonwebtoken");
-const { createError } = require("./error");
+const { createError, updateError } = require("./error");
 
 require("dotenv").config();
 
 const { ACCESS_SECRET_KEY, REFRESH_SECRET_KEY } = process.env;
-
-console.log("ACCESS_SECRET_KEY :>> ", ACCESS_SECRET_KEY);
 
 const create = (payload, secretKey, expiresIn) => {
   const token = jwt.sign(payload, secretKey, { expiresIn });
@@ -32,7 +30,7 @@ const verifyAccessToken = async (token) => {
   try {
     return await verify(token, ACCESS_SECRET_KEY);
   } catch (error) {
-    throw error;
+    throw updateError(404, error);
   }
 };
 
@@ -40,7 +38,7 @@ const verifyRefreshToken = async (token) => {
   try {
     return await verify(token, REFRESH_SECRET_KEY);
   } catch (error) {
-    throw error;
+    throw updateError(404, error);
   }
 };
 

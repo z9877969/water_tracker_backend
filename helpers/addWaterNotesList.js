@@ -1,3 +1,4 @@
+// helper for insert test data to db
 const ObjectID = require("bson-objectid");
 const { Water } = require("../models");
 
@@ -42,8 +43,7 @@ const getNotes = (num) => {
 
 const addWaterNotesList = async (notesNum) => {
   const waterNotes = getNotes(notesNum);
-  const data = await Water.insertMany(waterNotes);
-  console.log("Water was writen", data);
+  await Water.insertMany(waterNotes);
 };
 
 module.exports = addWaterNotesList;

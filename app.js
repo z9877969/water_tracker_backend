@@ -4,7 +4,7 @@ const cors = require("cors");
 const usersRouter = require("./routes/api/usersRouter");
 const waterRouter = require("./routes/api/waterRouter");
 const { authorization } = require("./middlewares");
-const { addWaterNotesList } = require("./helpers");
+// const { addWaterNotesList } = require("./helpers");
 
 const app = express();
 
@@ -17,18 +17,20 @@ app.use(express.static("public"));
 
 app.use("/api/users", usersRouter);
 app.use("/api/water", authorization, waterRouter);
-app.use(
-  "/api/db",
-  express.Router().post("/create", async (req, res, next) => {
-    try {
-      const { notesNum } = req.body;
-      await addWaterNotesList(notesNum);
-      res.status(204).json();
-    } catch (error) {
-      next(error);
-    }
-  })
-);
+// route for insert test data to db
+// app.use(
+//   "/api/db",
+//   express.Router().post("/create", async (req, res, next) => {
+//     try {
+//       const { notesNum } = req.body;
+//       await addWaterNotesList(notesNum);
+//       res.status(204).json();
+//     } catch (error) {
+//       next(error);
+//     }
+//   })
+// );
+// route for insert test data to db -END
 
 app.use((req, res, next) => {
   console.log(req.path);

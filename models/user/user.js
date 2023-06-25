@@ -35,6 +35,10 @@ const userSchema = new Schema(
       required: true,
       default: 0,
     },
+    hoursDiff: {
+      type: Number,
+      default: 0,
+    },
   },
   {
     versionKey: false,

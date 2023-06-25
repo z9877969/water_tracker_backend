@@ -1,5 +1,5 @@
 const { Schema, model } = require("mongoose");
-const { waterSchema: constants, regex } = require("../../constants");
+const { waterSchema: constants } = require("../../constants");
 
 const waterSchema = Schema({
   waterVolume: {

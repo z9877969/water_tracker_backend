@@ -28,6 +28,12 @@ const waterRoutersOptions = [
     middlewares: null,
   },
   {
+    route: "/stats/day",
+    method: "get",
+    controller: "getWaterStatsByCurrentDay",
+    middlewares: null,
+  },
+  {
     route: "/stats/:month",
     method: "get",
     controller: "getWaterStatsByMonthDays",

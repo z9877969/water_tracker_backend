@@ -4,6 +4,8 @@ const passwordTools = require("./passwordTools");
 const filesTools = require("./filesTools");
 const addWaterNotesList = require("./addWaterNotesList");
 const getMonthBreakPoints = require("./getMonthBreakPoints");
+const getCurrentDayBreakPoints = require("./getCurrentDayBreakPoints");
+const getHoursDiff = require("./getHoursDiff");
 
 module.exports = {
   createError,
@@ -13,4 +15,6 @@ module.exports = {
   filesTools,
   addWaterNotesList,
   getMonthBreakPoints,
+  getCurrentDayBreakPoints,
+  getHoursDiff,
 };

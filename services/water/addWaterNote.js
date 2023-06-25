@@ -1,10 +1,20 @@
-const { updateError } = require("../../helpers");
-const { Water } = require("../../models");
+const { updateError, getHoursDiff } = require("../../helpers");
+const { Water, User } = require("../../models");
 
 const addWaterNote = async (user, body) => {
   try {
-    const waterNote = { ...body, owner: user._id };
-    const newWaterNote = await Water.create(waterNote);
+    const hoursDiff = getHoursDiff(body.date);
+    if (user.hoursDiff !== hoursDiff) {
+      await User.findByIdAndUpdate(user._id, {
+        hoursDiff,
+      });
+    }
+
+    const newWaterNote = await Water.create({
+      ...body,
+      owner: user._id,
+    });
+
     const { _id, date, waterVolume, owner } = newWaterNote;
     return { _id, date, waterVolume, owner };
   } catch (error) {

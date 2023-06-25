@@ -1,5 +1,4 @@
-const { format } = require("date-fns");
-const { getMonthBreakPoints, updateError } = require("../../helpers");
+const { getMonthBreakPoints, updateError, createError } = require("../../helpers");
 const { Water } = require("../../models");
 
 const getWaterStatsByMonthDays = async (month, user) => {
@@ -21,7 +20,12 @@ const getWaterStatsByMonthDays = async (month, user) => {
       },
       {
         $group: {
-          _id: "$date",
+          _id: {
+            $dateToString: {
+              date: "$date",
+              format: "%Y-%m-%d",
+            },
+          },
           totalWaterVolume: { $sum: "$waterVolume" },
           waterServings: { $count: {} },
         },
@@ -45,7 +49,7 @@ const getWaterStatsByMonthDays = async (month, user) => {
         },
       },
     ]);
-    return notes.map((el) => ({ ...el, day: format(el.day, "d, MMMM") }));
+    return notes;
   } catch (error) {
     throw updateError(400, error);
   }

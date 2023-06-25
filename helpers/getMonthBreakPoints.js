@@ -1,4 +1,4 @@
-const getMonthBreakPoints = (date = "2023-06") => {
+const getMonthBreakPoints = (date) => {
   const [year, month] = date
     .split("-")
     .map((el, idx) => (idx === 1 ? Number(el) - 1 : Number(el)));

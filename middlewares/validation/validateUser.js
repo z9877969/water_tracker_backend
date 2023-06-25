@@ -2,7 +2,6 @@ const { createError } = require("../../helpers/error");
 const { userValidationSchemas: schemas } = require("../../models");
 
 const validateUserAuth = async (req, res, next) => {
-  console.log("validUserAuth");
   try {
     const { error } = await schemas.authUser.validate(req.body);
     if (error) {

@@ -1,6 +1,11 @@
 const { Router } = require("express");
-const { authorization, validateWater: validate } = require("../../middlewares");
+const {
+  authorization,
+  validateWater: validate,
+  userAccessToEntity,
+} = require("../../middlewares");
 const { water: controllers } = require("../../controllers");
+const { Water } = require("../../models");
 
 const waterRoutersOptions = [
   {
@@ -19,13 +24,13 @@ const waterRoutersOptions = [
     route: "/notes/:id",
     method: "delete",
     controller: "removeWaterNote",
-    middlewares: [validate.updateWaterNote],
+    middlewares: [userAccessToEntity(Water, "Note"), validate.updateWaterNote],
   },
   {
     route: "/notes/:id",
     method: "patch",
     controller: "updateWaterNote",
-    middlewares: null,
+    middlewares: [userAccessToEntity(Water, "Note")],
   },
   {
     route: "/stats/day",

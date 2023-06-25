@@ -9,7 +9,7 @@ const updateUserInfo = async (user, body) => {
         user.password
       );
       if (!isPasswordCompare) {
-        throw createError(400, "Password not correct");
+        throw createError(400, "Password is not correct");
       }
       const hashedPassword = await passwordTools.hash(body.password);
       body.password = hashedPassword;

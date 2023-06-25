@@ -6,6 +6,7 @@ const addWaterNotesList = require("./addWaterNotesList");
 const getMonthBreakPoints = require("./getMonthBreakPoints");
 const getCurrentDayBreakPoints = require("./getCurrentDayBreakPoints");
 const getHoursDiff = require("./getHoursDiff");
+const getHasUserAcessToEntity = require("./getHasUserAcessToEntity");
 
 module.exports = {
   createError,
@@ -17,4 +18,5 @@ module.exports = {
   getMonthBreakPoints,
   getCurrentDayBreakPoints,
   getHoursDiff,
+  getHasUserAcessToEntity,
 };

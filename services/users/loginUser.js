@@ -10,7 +10,7 @@ const loginUser = async (body) => {
       : null;
 
     if (!user || !isPasswordsCompare) {
-      throw createError(409, "Email or password is using");
+      throw createError(409, "Email or password are not correct");
     }
 
     const { _id, email, gender, name, avatarUrl } = user;

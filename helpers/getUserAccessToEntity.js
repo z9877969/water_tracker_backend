@@ -1,4 +1,4 @@
-const getHasUserAccessToEntity = async (
+const userAccessToEntity = async (
   owner,
   model,
   entityId,
@@ -19,4 +19,4 @@ const getHasUserAccessToEntity = async (
   }
 };
 
-module.exports = getHasUserAccessToEntity;
+module.exports = userAccessToEntity;

@@ -27,8 +27,8 @@ class RouterCreator {
           ? dm
           : null;
       m
-        ? this.#router[method](route, ...m, controllers[controller])
-        : this.#router[method](route, controllers[controller]);
+        ? this.#router[method](route, ...m, controller)
+        : this.#router[method](route, controller);
     });
   }
 }

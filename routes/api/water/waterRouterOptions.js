@@ -3,43 +3,44 @@ const {
   validateWater: validate,
   userAccessToEntity,
 } = require("../../../middlewares");
+const { water: controllers } = require("../../../controllers");
 const { Water } = require("../../../models");
 
 const waterRoutersOptions = [
   {
     route: "/notes/:month",
     method: "get",
-    controller: "getWaterStatsByMonthDays",
+    controller: controllers.getWaterStatsByMonthDays,
     middlewares: null,
   },
   {
     route: "/notes",
     method: "post",
-    controller: "addWaterNote",
+    controller: controllers.addWaterNote,
     middlewares: [validate.addWaterNote],
   },
   {
     route: "/notes/:id",
     method: "delete",
-    controller: "removeWaterNote",
+    controller: controllers.removeWaterNote,
     middlewares: [userAccessToEntity(Water, "Note"), validate.updateWaterNote],
   },
   {
     route: "/notes/:id",
     method: "patch",
-    controller: "updateWaterNote",
+    controller: controllers.updateWaterNote,
     middlewares: [userAccessToEntity(Water, "Note")],
   },
   {
     route: "/stats/day",
     method: "get",
-    controller: "getWaterStatsByCurrentDay",
+    controller: controllers.getWaterStatsByCurrentDay,
     middlewares: null,
   },
   {
     route: "/stats/:month",
     method: "get",
-    controller: "getWaterStatsByMonthDays",
+    controller: controllers.getWaterStatsByMonthDays,
     middlewares: [validate.getWaterStatsMonthFormat],
   },
 ];

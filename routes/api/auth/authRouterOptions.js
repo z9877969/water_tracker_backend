@@ -1,26 +1,27 @@
 const {
-    validateAuth: validate,
-    authorization,
-  } = require("../../../middlewares");
+  validateAuth: validate,
+  authorization,
+} = require("../../../middlewares");
+const { auth: controllers } = require("../../../controllers");
 
 const authRouterOptions = [
   {
     method: "post",
     route: "/register",
     middlewares: [validate.authUser],
-    controller: "registerUser",
+    controller: controllers.registerUser,
   },
   {
     method: "post",
     route: "/login",
     middlewares: [validate.authUser],
-    controller: "loginUser",
+    controller: controllers.loginUser,
   },
   {
     method: "get",
     route: "/logout",
     middlewares: [authorization],
-    controller: "logoutUser",
+    controller: controllers.logoutUser,
   },
 ];
 

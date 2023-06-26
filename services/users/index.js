@@ -4,6 +4,7 @@ const getCurrentUser = require("./getCurrentUser");
 const updateUserInfo = require("./updateUserInfo");
 const updateUserAvatar = require("./updateUserAvatar");
 const updateWaterRate = require("./updateWaterRate");
+const logoutUser = require("./logoutUser");
 
 module.exports = {
   registerUser,
@@ -12,4 +13,5 @@ module.exports = {
   updateUserInfo,
   updateUserAvatar,
   updateWaterRate,
+  logoutUser,
 };

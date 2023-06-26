@@ -39,6 +39,11 @@ const userSchema = new Schema(
       type: Number,
       default: 0,
     },
+    isAuth: {
+      type: Boolean,
+      require: true,
+      default: false,
+    },
   },
   {
     versionKey: false,

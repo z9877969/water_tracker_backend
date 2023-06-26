@@ -6,25 +6,25 @@ const authorization = async (req, res, next) => {
     const [bearer, token] = req.headers.authorization.split(" ");
 
     if (bearer !== "Bearer" || !token) {
-      throw createError(401, "Not authorized");
+      throw createError(401);
     }
 
     try {
       const { id } = await tokenTools.verifyAccessToken(token);
 
       if (!id) {
-        throw createError(401, "Not authorized");
+        throw createError(401);
       }
 
       const user = await User.findById(id);
 
-      if (!user) {
-        throw createError(401, "Not authorized");
+      if (!user || !user.isAuth) {
+        throw createError(401);
       }
 
       req.user = user;
 
-      next();
+      return next();
     } catch (error) {
       throw updateError(404, error);
     }

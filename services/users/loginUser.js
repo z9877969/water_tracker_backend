@@ -13,6 +13,8 @@ const loginUser = async (body) => {
       throw createError(409, "Email or password are not correct");
     }
 
+    await User.findByIdAndUpdate(user._id, { isAuth: true });
+
     const { _id, email, gender, name, avatarUrl } = user;
 
     const payload = { id: user._id };

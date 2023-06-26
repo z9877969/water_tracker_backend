@@ -1,4 +1,4 @@
-const { users: services } = require("../../services");
+const { auth: services } = require("../../services");
 
 const registerUserController = async (req, res, next) => {
   try {

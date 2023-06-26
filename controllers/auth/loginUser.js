@@ -1,4 +1,4 @@
-const { users: services } = require("../../services");
+const { auth: services } = require("../../services");
 
 const loginUser = async (req, res, next) => {
   try {

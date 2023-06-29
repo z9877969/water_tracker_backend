@@ -42,9 +42,17 @@ const verifyRefreshToken = async (token) => {
   }
 };
 
+const createTokens = (payload) => {
+  return {
+    accessToken: createAccessToken(payload),
+    refreshToken: createRefreshToken(payload),
+  };
+};
+
 module.exports = {
   createAccessToken,
   createRefreshToken,
   verifyAccessToken,
   verifyRefreshToken,
+  createTokens,
 };

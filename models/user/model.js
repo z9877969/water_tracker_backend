@@ -3,6 +3,11 @@ const { userSchema: constants, regex } = require("../../constants");
 
 const userSchema = new Schema(
   {
+    name: {
+      type: String,
+      maxLength: constants.MAX_NAME_LENGTH,
+      default: null,
+    },
     email: {
       type: String,
       required: [true, "Email is required"],
@@ -14,11 +19,6 @@ const userSchema = new Schema(
       required: [true, "Password is required"],
       minLength: 8,
       maxLength: 64,
-    },
-    name: {
-      type: String,
-      maxLength: constants.MAX_NAME_LENGTH,
-      default: null,
     },
     gender: {
       type: String,
@@ -38,11 +38,6 @@ const userSchema = new Schema(
     hoursDiff: {
       type: Number,
       default: 0,
-    },
-    isAuth: {
-      type: Boolean,
-      require: true,
-      default: false,
     },
   },
   {

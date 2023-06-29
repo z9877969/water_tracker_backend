@@ -1,5 +1,5 @@
 const { createError, passwordTools, tokenTools } = require("../../helpers");
-const { User } = require("../../models");
+const { User, Session } = require("../../models");
 
 const loginUser = async (body) => {
   try {
@@ -13,16 +13,21 @@ const loginUser = async (body) => {
       throw createError(409, "Email or password are not correct");
     }
 
-    await User.findByIdAndUpdate(user._id, { isAuth: true });
+    const { _id: sid } = await Session.create({ uid: user._id });
 
     const { _id, email, gender, name, avatarUrl } = user;
 
-    const payload = { id: user._id };
+    const { accessToken, refreshToken } = tokenTools.createTokens({
+      id: user._id,
+      sid,
+    });
 
-    const accessToken = tokenTools.createAccessToken(payload);
-    const refreshToken = tokenTools.createRefreshToken(payload);
-
-    return { _id, email, gender, name, avatarUrl, accessToken, refreshToken };
+    return {
+      user: { _id, email, gender, name, avatarUrl },
+      sid,
+      accessToken,
+      refreshToken,
+    };
   } catch (error) {
     throw error;
   }

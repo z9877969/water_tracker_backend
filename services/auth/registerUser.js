@@ -12,12 +12,12 @@ const registerUser = async (body) => {
     const hashedPassword = await passwordTools.hash(body.password);
     body.password = hashedPassword;
 
-    const { _id, email } = await User.create({
+    const { _id, email, name } = await User.create({
       ...body,
       password: hashedPassword,
     });
 
-    return { _id, email };
+    return { _id, email, name };
   } catch (error) {
     throw updateError(400, error);
   }

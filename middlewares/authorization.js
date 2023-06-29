@@ -1,7 +1,7 @@
 const { createError, tokenTools, updateError } = require("../helpers");
-const { User } = require("../models");
+const { User, Session } = require("../models");
 
-const authorization = async (req, res, next) => {
+const accessToken = async (req, res, next) => {
   try {
     const [bearer, token] = req.headers.authorization.split(" ");
 
@@ -10,19 +10,23 @@ const authorization = async (req, res, next) => {
     }
 
     try {
-      const { id } = await tokenTools.verifyAccessToken(token);
-
-      if (!id) {
+      const { id, sid } = await tokenTools.verifyAccessToken(token);
+      if (!id || !sid) {
         throw createError(401);
+      }
+      const userSession = await Session.findById(sid);
+      if (!userSession) {
+        throw createError(404, "Invalid session");
       }
 
       const user = await User.findById(id);
 
-      if (!user || !user.isAuth) {
-        throw createError(401);
+      if (!user) {
+        throw createError(404, "Invalid user");
       }
 
       req.user = user;
+      req.user.sid = sid;
 
       return next();
     } catch (error) {
@@ -33,4 +37,40 @@ const authorization = async (req, res, next) => {
   }
 };
 
-module.exports = authorization;
+const refreshToken = async (req, res, next) => {
+  try {
+    const [bearer, token] = req.headers.autorization.split(" ");
+
+    if (bearer !== "Bearer" || !token) {
+      throw createError(403);
+    }
+
+    try {
+      const { id, sid } = await tokenTools.verifyRefreshToken(token);
+      if (!id || !sid) {
+        throw createError(400);
+      }
+      const userSession = await Session.findById(sid);
+      if (!userSession) {
+        throw createError(404, "Invalid session");
+      }
+
+      const user = await User.findById(id);
+
+      if (!user) {
+        throw createError(404, "Invalid user");
+      }
+
+      req.user = user;
+      req.user.sid = sid;
+
+      return next();
+    } catch (error) {
+      throw updateError(404, error);
+    }
+  } catch (error) {
+    next(error);
+  }
+};
+
+module.exports = { accessToken, refreshToken };

@@ -1,9 +1,9 @@
 const { updateError } = require("../../helpers");
-const { User } = require("../../models");
+const { Session } = require("../../models");
 
-const logoutUser = async (userId) => {
+const logoutUser = async (sid) => {
   try {
-    await User.findByIdAndUpdate(userId, { isAuth: false });
+    await Session.findByIdAndRemove(sid);
     return;
   } catch (error) {
     throw updateError(400, error);

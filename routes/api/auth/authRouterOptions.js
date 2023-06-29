@@ -20,8 +20,14 @@ const authRouterOptions = [
   {
     method: "get",
     route: "/logout",
-    middlewares: [authorization],
+    middlewares: [authorization.accessToken],
     controller: controllers.logoutUser,
+  },
+  {
+    method: "get",
+    route: "/refresh",
+    middlewares: [authorization.refreshToken, validate.refreshTokens],
+    controller: controllers.refreshTokens,
   },
 ];
 

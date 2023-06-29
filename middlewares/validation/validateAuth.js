@@ -13,6 +13,19 @@ const validateUserAuth = async (req, res, next) => {
   }
 };
 
+const validateTokensRefreshing = async (req, res, next) => {
+  try {
+    const { error } = await schemas.refreshTokens(req.body);
+    if (error) {
+      throw createError(400, error.message);
+    }
+    next();
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   authUser: validateUserAuth,
+  refreshTokens: validateTokensRefreshing,
 };

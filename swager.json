@@ -1,0 +1,36 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "version": "2.0.1",
+    "title": "BookRead API docs",
+    "description": "API documentation for GoIT project 'BookRead'. [Backend github repository](https://github.com/DanTsvirkun/bookread-backend)",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://bookread-backend.goit.global"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Auth",
+      "description": "Authorization endpoints"
+    },
+    {
+      "name": "Book",
+      "description": "Book endpoints"
+    },
+    {
+      "name": "Planning",
+      "description": "Planning endpoints"
+    },
+    {
+      "name": "User",
+      "description": "User endpoints"
+    }
+  ],
+  "paths": {}
+}

@@ -6,6 +6,8 @@ const {
 const { water: controllers } = require("../../../controllers");
 const { Water } = require("../../../models");
 
+const defaultMiddlewares = [authorization.accessToken];
+
 const waterRoutersOptions = [
   {
     route: "/notes/:month",
@@ -44,7 +46,5 @@ const waterRoutersOptions = [
     middlewares: [validate.getWaterStatsMonthFormat],
   },
 ];
-
-const defaultMiddlewares = [authorization];
 
 module.exports = { waterRoutersOptions, defaultMiddlewares };

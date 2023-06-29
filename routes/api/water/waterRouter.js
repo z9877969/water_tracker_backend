@@ -1,5 +1,4 @@
 const { createRouter } = require("../../../helpers");
-const { water: controllers } = require("../../../controllers");
 const {
   waterRoutersOptions,
   defaultMiddlewares,
@@ -10,6 +9,6 @@ const waterRouter = createRouter({
   defaultMiddlewares: defaultMiddlewares,
 });
 
-waterRouter.setRouter(controllers);
+waterRouter.setRouter();
 
 module.exports = waterRouter.router;

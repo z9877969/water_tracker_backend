@@ -5,7 +5,7 @@ const {
 } = require("../../../middlewares");
 const { users: controllers } = require("../../../controllers");
 
-const defaultMiddlewares = [authorization];
+const defaultMiddlewares = [authorization.accessToken];
 
 const usersRouterOptions = [
   {

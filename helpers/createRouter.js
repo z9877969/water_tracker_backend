@@ -6,16 +6,16 @@ class RouterCreator {
   #router;
 
   constructor({ options, defaultMiddlewares = [] }) {
+    this.#router = Router();
     this.#options = options;
     this.#defaultMiddlewares = defaultMiddlewares;
-    this.#router = Router();
   }
 
   get router() {
     return this.#router;
   }
 
-  setRouter(controllers) {
+  setRouter() {
     this.#options.forEach(({ route, method, controller, middlewares }) => {
       const dm = this.#defaultMiddlewares;
       const m =

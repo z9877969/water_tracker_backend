@@ -1,5 +1,4 @@
 const { createRouter } = require("../../../helpers");
-const { users: controllers } = require("../../../controllers");
 const {
   defaultMiddlewares,
   usersRouterOptions,
@@ -10,6 +9,6 @@ const usersRouter = createRouter({
   options: usersRouterOptions,
 });
 
-usersRouter.setRouter(controllers);
+usersRouter.setRouter();
 
 module.exports = usersRouter.router;

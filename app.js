@@ -2,12 +2,8 @@ const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
 const swaggerUi = require("swagger-ui-express");
-const { 
-  authRouter, 
-  // usersRouter,
-  //  waterRouter
-   } = require("./routes/api");
-const swaggerDocument = require('./swager.json');
+const { authRouter, usersRouter, waterRouter } = require("./routes/api");
+const swaggerDocument = require("./swager.json");
 
 const app = express();
 
@@ -19,9 +15,9 @@ app.use(express.json());
 app.use(express.static("public"));
 
 app.use("/api/auth", authRouter);
-// app.use("/api/users", usersRouter);
-// app.use("/api/water", waterRouter);
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument))
+app.use("/api/users", usersRouter);
+app.use("/api/water", waterRouter);
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use((req, res, next) => {
   res.status(404).json({ message: "Not found - invalid request" });

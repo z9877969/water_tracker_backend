@@ -10,12 +10,6 @@ const defaultMiddlewares = [authorization.accessToken];
 
 const waterRoutersOptions = [
   {
-    route: "/notes/:month",
-    method: "get",
-    controller: controllers.getWaterStatsByMonthDays,
-    middlewares: null,
-  },
-  {
     route: "/notes",
     method: "post",
     controller: controllers.addWaterNote,

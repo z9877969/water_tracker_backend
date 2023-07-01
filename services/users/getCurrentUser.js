@@ -9,7 +9,7 @@ const getCurrentUser = async (user) => {
     );
     return userData;
   } catch (error) {
-    throw createError(400, error.message);
+    throw error;
   }
 };
 

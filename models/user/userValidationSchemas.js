@@ -7,7 +7,10 @@ const {
 } = require("../../constants");
 
 const authUserValidationSchema = Joi.object({
-  email: Joi.string().pattern(EMAIL_REGEX).required(),
+  email: Joi.string()
+    .pattern(EMAIL_REGEX)
+    .max(constants.PASSWORD_LENGTH.MAX)
+    .required(),
   password: Joi.string()
     .min(constants.PASSWORD_LENGTH.MIN)
     .max(constants.PASSWORD_LENGTH.MAX),

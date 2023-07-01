@@ -1,6 +1,6 @@
 const WATER_VOLUME = {
   MIN: 1,
-  MAX: 35000,
+  MAX: 15000,
 };
 
 module.exports = {

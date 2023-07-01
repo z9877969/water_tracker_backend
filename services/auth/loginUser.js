@@ -10,12 +10,12 @@ const loginUser = async (body) => {
       : null;
 
     if (!user || !isPasswordsCompare) {
-      throw createError(409, "Email or password are not correct");
+      throw createError(403, "Email doesn't exist / Password is wrong");
     }
 
     const { _id: sid } = await Session.create({ uid: user._id });
 
-    const { _id, email, gender, name, avatarUrl } = user;
+    const { _id, email, gender, name, avatarUrl, waterRate } = user;
 
     const { accessToken, refreshToken } = tokenTools.createTokens({
       id: user._id,
@@ -23,7 +23,7 @@ const loginUser = async (body) => {
     });
 
     return {
-      user: { _id, email, gender, name, avatarUrl },
+      user: { _id, email, gender, name, avatarUrl, waterRate },
       sid,
       accessToken,
       refreshToken,

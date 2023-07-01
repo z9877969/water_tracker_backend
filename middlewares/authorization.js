@@ -6,7 +6,7 @@ const accessToken = async (req, res, next) => {
     const [bearer, token] = req.headers.authorization.split(" ");
 
     if (bearer !== "Bearer" || !token) {
-      throw createError(401);
+      throw createError(400, "No token provided");
     }
 
     try {
@@ -30,7 +30,7 @@ const accessToken = async (req, res, next) => {
 
       return next();
     } catch (error) {
-      throw updateError(404, error);
+      throw error;
     }
   } catch (error) {
     next(error);
@@ -42,13 +42,13 @@ const refreshToken = async (req, res, next) => {
     const [bearer, token] = req.headers.autorization.split(" ");
 
     if (bearer !== "Bearer" || !token) {
-      throw createError(403);
+      throw createError(400, "No token provided");
     }
 
     try {
       const { id, sid } = await tokenTools.verifyRefreshToken(token);
       if (!id || !sid) {
-        throw createError(400);
+        throw createError(401);
       }
       const userSession = await Session.findById(sid);
       if (!userSession) {

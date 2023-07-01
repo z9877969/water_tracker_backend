@@ -28,7 +28,7 @@ const userSchema = new Schema(
     avatarUrl: {
       type: String,
       require: true,
-      default: "https://some.url.com/path/to/default/avatar",
+      default: null,
     },
     waterRate: {
       type: Number,

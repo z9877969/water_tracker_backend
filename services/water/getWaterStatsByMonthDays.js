@@ -1,4 +1,8 @@
-const { getMonthBreakPoints, updateError, createError } = require("../../helpers");
+const {
+  getMonthBreakPoints,
+  updateError,
+  createError,
+} = require("../../helpers");
 const { Water } = require("../../models");
 
 const getWaterStatsByMonthDays = async (month, user) => {
@@ -42,7 +46,7 @@ const getWaterStatsByMonthDays = async (month, user) => {
               0,
             ],
           },
-          dayWaterRate: {
+          dayliWaterRate: {
             $round: [{ $divide: [waterRate, 1000] }, 1],
           },
           waterServings: "$waterServings",
@@ -51,7 +55,7 @@ const getWaterStatsByMonthDays = async (month, user) => {
     ]);
     return notes;
   } catch (error) {
-    throw updateError(400, error);
+    throw error;
   }
 };
 

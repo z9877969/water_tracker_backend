@@ -10,12 +10,12 @@ const userAccessToEntity = async (
       throw createError(404, `${entityName} was not found`);
     }
     if (String(entity.owner) !== String(owner)) {
-      throw createError(403);
+      throw createError(403, "No access to data");
     }
 
     return true;
   } catch (error) {
-    throw updateError(400, error);
+    throw error;
   }
 };
 

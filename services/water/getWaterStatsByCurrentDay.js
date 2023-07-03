@@ -1,4 +1,4 @@
-const { getCurrentDayBreakPoints, updateError } = require("../../helpers");
+const { getCurrentDayBreakPoints } = require("../../helpers");
 const { Water } = require("../../models");
 
 const getWaterStatsByCurrentDay = async (user) => {
@@ -45,7 +45,7 @@ const getWaterStatsByCurrentDay = async (user) => {
               0,
             ],
           },
-          dayWaterRate: {
+          dayliWaterRate: {
             $round: [{ $divide: [user.waterRate, 1000] }, 1],
           },
           waterNotes: "$waterNotes",
@@ -54,7 +54,7 @@ const getWaterStatsByCurrentDay = async (user) => {
     ]);
     return stats[0] || null;
   } catch (error) {
-    throw updateError(400, error);
+    throw error;
   }
 };
 

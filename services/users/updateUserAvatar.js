@@ -1,4 +1,4 @@
-const { filesTools, createError, updateError } = require("../../helpers");
+const { filesTools, createError } = require("../../helpers");
 const { User } = require("../../models");
 
 const updateUserAvatar = async (user, file) => {
@@ -28,7 +28,7 @@ const updateUserAvatar = async (user, file) => {
       throw createError(400, error.message);
     }
   } catch (error) {
-    throw updateError(400, error);
+    throw error;
   }
 };
 

@@ -1,4 +1,3 @@
-const { updateError } = require("../../helpers");
 const { User } = require("../../models");
 
 const updateWaterRate = async (user, body) => {
@@ -10,7 +9,7 @@ const updateWaterRate = async (user, body) => {
 
     return waterRate;
   } catch (error) {
-    throw updateError(400, error);
+    throw error;
   }
 };
 

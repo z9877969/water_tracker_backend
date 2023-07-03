@@ -1,4 +1,4 @@
-const { updateError, getHoursDiff } = require("../../helpers");
+const { getHoursDiff } = require("../../helpers");
 const { Water, User } = require("../../models");
 
 const addWaterNote = async (user, body) => {
@@ -18,7 +18,7 @@ const addWaterNote = async (user, body) => {
     const { _id, date, waterVolume, owner } = newWaterNote;
     return { _id, date, waterVolume, owner };
   } catch (error) {
-    throw updateError(400, error);
+    throw error;
   }
 };
 

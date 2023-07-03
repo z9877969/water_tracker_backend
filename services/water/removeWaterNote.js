@@ -1,8 +1,4 @@
-const {
-  updateError,
-  createError,
-  getHasUserAcessToEntity,
-} = require("../../helpers");
+const { updateError } = require("../../helpers");
 const { Water } = require("../../models");
 
 const removeWaterNote = async (id) => {

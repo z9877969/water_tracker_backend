@@ -11,13 +11,13 @@
   },
   "servers": [
     {
-      "url": "http://localhost:4040/api",
+      "url": "http://localhost:4040/api/",
       "variables": {
         "environment": {
-          "default": "http://localhost:4040/api",
+          "default": "http://localhost:4040/api/",
           "enum": [
-            "http://localhost:4040/api",
-            "https://water-traker.p.goit.global/api"
+            "http://localhost:4040/api/",
+            "https://water-traker.p.goit.global/api/"
           ]
         }
       }
@@ -1089,13 +1089,13 @@
           }
         }
       }
-    }
-  },
-  "securitySchemes": {
-    "Bearer": {
-      "type": "http",
-      "scheme": "bearer",
-      "bearerFormat": "JWT"
+    },
+    "securitySchemes": {
+      "Bearer": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
     }
   }
 }

@@ -11,13 +11,13 @@
   },
   "servers": [
     {
-      "url": "https://water-traker.p.goit.global/api/",
+      "url": "https://water-traker-backend.p.goit.global/api/",
       "variables": {
         "environment": {
           "default": "http://localhost:4040/api/",
           "enum": [
             "https://water-traker-backend.p.goit.global/api/",
-            "http://localhost:4040/api/",
+            "http://localhost:4040/api/"
           ]
         }
       }

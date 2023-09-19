@@ -2,7 +2,7 @@ const { water: services } = require("../../services");
 
 const removeWaterNote = async (req, res, next) => {
   try {
-    await services.removeWaterNote(id);
+    await services.removeWaterNote(req.params.id);
     res.status(204).json();
   } catch (error) {
     next(error);

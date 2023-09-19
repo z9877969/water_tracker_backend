@@ -23,7 +23,7 @@ const usersRouterOptions = [
   {
     method: "patch",
     route: "/avatar",
-    middlewares: [upload.single("avatarUrl")],
+    middlewares: [upload.single("avatar")],
     controller: controllers.updateUserAvatar,
   },
   {

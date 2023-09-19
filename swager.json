@@ -438,14 +438,14 @@
           {
             "in": "path",
             "name": "id",
-            "description": "Water`s note id. ('_id' field in water`s note's object)",
+            "description": "Water note's id. ('_id' is field in water note's object)",
             "required": true,
             "type": "string"
           }
         ],
         "security": [{ "Bearer": [] }],
         "requestBody": {
-          "description": "Updates water`s note info. At least one field is required.",
+          "description": "Updates water's note info. At least one field is required.",
           "content": {
             "application/json": {
               "schema": {
@@ -485,7 +485,7 @@
       },
       "delete": {
         "tags": ["Water"],
-        "summary": "Remove user`s water`s note",
+        "summary": "Remove user`s water note",
         "parameters": [
           {
             "in": "header",
@@ -495,7 +495,7 @@
           {
             "in": "path",
             "name": "id",
-            "description": "Water`s note id. ('_id' field in water`s note's object)",
+            "description": "Water's note id. ('_id' is field in water note's object)",
             "required": true
           }
         ],
@@ -562,7 +562,7 @@
         }
       }
     },
-    "/water/stats/:month": {
+    "/water/stats/{month}": {
       "get": {
         "tags": ["Water"],
         "summary": "Gets the user's statistics on the water consumed for the chosed month",

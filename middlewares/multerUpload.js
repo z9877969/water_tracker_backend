@@ -1,5 +1,4 @@
 const multer = require("multer");
-const path = require("path");
 const { dirPath } = require("../helpers/filesTools");
 
 const multerConfig = multer.diskStorage({

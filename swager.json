@@ -283,7 +283,7 @@
     "/users/avatar": {
       "patch": {
         "tags": ["User"],
-        "summary": "Updates user`s avatar",
+        "summary": "Updates user`s avatar (let use image with human face for its correct crop and resize)",
         "parameters": [
           {
             "in": "header",

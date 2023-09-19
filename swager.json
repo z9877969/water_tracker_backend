@@ -425,7 +425,7 @@
         }
       }
     },
-    "/water/notes/:id": {
+    "/water/notes/{id}": {
       "patch": {
         "tags": ["Water"],
         "summary": "Updates user`s water`s note",
@@ -562,7 +562,7 @@
         }
       }
     },
-    "/water/stats/:month": {
+    "/water/stats/{month}": {
       "get": {
         "tags": ["Water"],
         "summary": "Gets the user's statistics on the water consumed for the chosed month",

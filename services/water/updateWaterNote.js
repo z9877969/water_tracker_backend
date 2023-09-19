@@ -4,7 +4,10 @@ const updateWaterNote = async (id, body) => {
   try {
     const updatedWaterNote = await Water.findByIdAndUpdate(id, body, {
       select: "-__v",
+      new: true,
     });
+
+    console.log(updatedWaterNote);
 
     return updatedWaterNote;
   } catch (error) {

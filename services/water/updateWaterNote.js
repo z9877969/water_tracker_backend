@@ -7,8 +7,6 @@ const updateWaterNote = async (id, body) => {
       new: true,
     });
 
-    console.log(updatedWaterNote);
-
     return updatedWaterNote;
   } catch (error) {
     throw error;

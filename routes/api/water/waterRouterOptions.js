@@ -19,16 +19,16 @@ const waterRoutersOptions = [
     route: "/notes/:id",
     method: "delete",
     controller: controllers.removeWaterNote,
-    middlewares: [
-      userAccessToEntity(Water, "Water`s note"),
-      validate.updateWaterNote,
-    ],
+    middlewares: [userAccessToEntity(Water, "Water`s note")],
   },
   {
     route: "/notes/:id",
     method: "patch",
     controller: controllers.updateWaterNote,
-    middlewares: [userAccessToEntity(Water, "Water`s note")],
+    middlewares: [
+      userAccessToEntity(Water, "Water`s note"),
+      validate.updateWaterNote,
+    ],
   },
   {
     route: "/stats/day",

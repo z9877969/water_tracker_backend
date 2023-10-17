@@ -11,16 +11,7 @@
   },
   "servers": [
     {
-      "url": "https://water-traker-backend.p.goit.global/api/",
-      "variables": {
-        "environment": {
-          "default": "http://localhost:4040/api/",
-          "enum": [
-            "https://water-traker-backend.p.goit.global/api/",
-            "http://localhost:4040/api/"
-          ]
-        }
-      }
+      "url": "https://water-tracker.b.goit.study/api/"
     }
   ],
   "tags": [
@@ -292,7 +283,7 @@
     "/users/avatar": {
       "patch": {
         "tags": ["User"],
-        "summary": "Updates user`s avatar",
+        "summary": "Updates user`s avatar (let use image with human face for its correct crop and resize)",
         "parameters": [
           {
             "in": "header",
@@ -447,14 +438,14 @@
           {
             "in": "path",
             "name": "id",
-            "description": "Water`s note id. ('_id' field in water`s note's object)",
+            "description": "Water note's id. ('_id' is field in water note's object)",
             "required": true,
             "type": "string"
           }
         ],
         "security": [{ "Bearer": [] }],
         "requestBody": {
-          "description": "Updates water`s note info. At least one field is required.",
+          "description": "Updates water's note info. At least one field is required.",
           "content": {
             "application/json": {
               "schema": {
@@ -494,7 +485,7 @@
       },
       "delete": {
         "tags": ["Water"],
-        "summary": "Remove user`s water`s note",
+        "summary": "Remove user`s water note",
         "parameters": [
           {
             "in": "header",
@@ -504,7 +495,7 @@
           {
             "in": "path",
             "name": "id",
-            "description": "Water`s note id. ('_id' field in water`s note's object)",
+            "description": "Water's note id. ('_id' is field in water note's object)",
             "required": true
           }
         ],
@@ -571,7 +562,7 @@
         }
       }
     },
-    "/water/stats/:month": {
+    "/water/stats/{month}": {
       "get": {
         "tags": ["Water"],
         "summary": "Gets the user's statistics on the water consumed for the chosed month",
@@ -808,38 +799,35 @@
         "required": [],
         "type": "object",
         "properties": {
-          "type": "object",
-          "properties": {
-            "email": {
-              "type": "string",
-              "description": "User's email",
-              "format": "email"
-            },
-            "password": {
-              "type": "string",
-              "description": "User's new password",
-              "example": "qwer1234",
-              "minLength": 8,
-              "maxLength": 64
-            },
-            "oldPassword": {
-              "type": "string",
-              "description": "User's old password",
-              "example": "abcd9876",
-              "minLength": 8,
-              "maxLength": 64
-            },
-            "gender": {
-              "type": "string",
-              "description": "User's gender",
-              "enum": ["mail", "femail"]
-            },
-            "name": {
-              "type": "string",
-              "description": "User`s name",
-              "maxLength": 32,
-              "example": "Bob"
-            }
+          "email": {
+            "type": "string",
+            "description": "User's email",
+            "format": "email"
+          },
+          "password": {
+            "type": "string",
+            "description": "User's new password",
+            "example": "qwer1234",
+            "minLength": 8,
+            "maxLength": 64
+          },
+          "oldPassword": {
+            "type": "string",
+            "description": "User's old password",
+            "example": "abcd9876",
+            "minLength": 8,
+            "maxLength": 64
+          },
+          "gender": {
+            "type": "string",
+            "description": "User's gender",
+            "enum": ["mail", "femail"]
+          },
+          "name": {
+            "type": "string",
+            "description": "User`s name",
+            "maxLength": 32,
+            "example": "Bob"
           }
         }
       },
